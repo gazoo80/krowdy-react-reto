@@ -19,7 +19,7 @@ const getInitialState = ({ questions }) => {
 
 const startCamera = async () => {
     try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
         return stream;
     } catch (error) {
         console.log('Error:', error)

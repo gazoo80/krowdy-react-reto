@@ -9,6 +9,7 @@ import FlipCameraAndroidIcon from '@mui/icons-material/FlipCameraAndroid';
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import StopCircleIcon from '@mui/icons-material/StopCircle';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
+import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Contexto from '../contexto/Contexto';
@@ -25,6 +26,7 @@ const Response = () => {
     const refRecord = useRef();
     const refAgain = useRef();
     const refStop = useRef();
+    const refTimer = useRef();
 
     const configureNavigation = () => {
         let previousRoute = '';
@@ -37,7 +39,6 @@ const Response = () => {
             const nextQuestions = questions.filter(q => q.order > order);
             const previousQuestions = questions.filter(q => q.order < order);
             goToQuestion = [...nextQuestions, ...previousQuestions];
-            console.log(goToQuestion);
 
             if (goToQuestion.length === 0) {
                 withNavigationButtons = false;
@@ -48,7 +49,6 @@ const Response = () => {
             const nextQuestions = questions.filter(q => q.order > order && q.recorded === false);
             const previousQuestions = questions.filter(q => q.order < order && q.recorded === false);
             goToQuestion = [...nextQuestions, ...previousQuestions];
-            console.log(goToQuestion);
 
             if (goToQuestion.length === 0) {
                 withNavigationButtons = false;
@@ -77,28 +77,37 @@ const Response = () => {
     let blobsRecorded = [];
     let videoResponse;
     let recordTimeout = null;
+    let timerInterval = null;
+    let minute = 0; 
+    let second = 0;
 
     const recordMode = () => {
         refAgain.current.style.display = 'none';
         refStop.current.style.display = 'none';
         refRecord.current.style.display = 'block';
+        console.log(refTimer.current);
+        refTimer.current.lastElementChild.classList.remove('video-rec-indicator');
+        refTimer.current.style.visibility = 'hidden';
     };
 
     const againMode = () => {
         refAgain.current.style.display = 'inline';
         refStop.current.style.display = 'none';
         refRecord.current.style.display = 'none';
+        refTimer.current.lastElementChild.classList.remove('video-rec-indicator');
+        refTimer.current.style.visibility = 'hidden';
     };
 
     const stopMode = () => {
         refAgain.current.style.display = 'none';
         refStop.current.style.display = 'block';
         refRecord.current.style.display = 'none';
+        refTimer.current.style.visibility = 'visible';
+        refTimer.current.lastElementChild.classList.add('video-rec-indicator');
     };
 
     const init = () => {
         if (recorded) {
-            console.log('Llegue al init');
             againMode();
         }
         else {
@@ -110,16 +119,21 @@ const Response = () => {
 
     useEffect(() => {
         init();
-
+        console.log('useEffect una vez');
         return () => {
             mediaRecorder = null;
             cameraStream = null;
             window.clearTimeout(recordTimeout);
+            console.log('unmount en primero');
         }
     },[]);
 
     useEffect(() => {    
         init();
+        console.log('useEffect por id')
+        return () => {
+            console.log('unmount en segundo');
+        }
     },[id]);
 
     const initCamera = () => {
@@ -153,11 +167,30 @@ const Response = () => {
         });
 
         mediaRecorder.start(500);
+
+        // Stop a la grabación
         recordTimeout = setTimeout(() => {
             stopRecording();
-        }, 7000);
+        }, 120000);
 
         stopMode();
+
+        // Timer de la grabación
+        timeRecording();
+        timerInterval = setInterval(timeRecording, 1000)
+    }
+
+    const timeRecording = () => {
+        let mt, st;
+        second++;
+
+        if (second > 59) { minute++; second = 0 }
+
+        st = ('0' + second).slice(-2);
+        mt = ('0' + minute).slice(-2);
+
+        let spanTime = refTimer.current.firstElementChild;
+        spanTime.innerText = `${mt}:${st}`;
     }
 
     const stopRecording = () => {
@@ -169,6 +202,7 @@ const Response = () => {
         refVideo.current.src = window.URL.createObjectURL(buffer);
         refVideo.current.play();
         window.clearTimeout(recordTimeout);
+        window.clearInterval(timerInterval);
         againMode();
         saveResponse(buffer);
     }
@@ -202,20 +236,24 @@ const Response = () => {
     return (
    
         <div className='w-100 mt-2 d-flex flex-column justify-content-center align-items-center' style={{height: '700px'}}  >
-            <div className='w-75 mb-2 d-flex justify-content-start'>
+            <div className='mb-2 d-flex justify-content-start' style={{width: '70%'}} >
                 <Link to='/'>
                     <Button variant="outlined" startIcon={<ArrowBackIcon />}>
                         Regresar al cuestionario
                     </Button>
                 </Link>
             </div>
-            <div className='w-75 bg-dark' style={{height: '65%'}} >
+            <div className=' bg-dark video-response' style={{height: '65%', width: '70%'}} >
                 <video ref={refVideo} id='video' autoPlay={true} loop width='100%' height='100%'></video>
+                <div ref={refTimer} className='timer-video-response d-flex justify-content-end align-items-center'>
+                    <span>00:00</span>
+                    <span className='rec-indicator ms-3'></span>
+                </div>
             </div>
-            <div className='w-75 bg-dark py-0 d-flex'>
+            <div className='bg-dark py-0 d-flex' style={{width: '70%'}}>
                 <div className='flex-grow-1'>
                     <IconButton ref={refRecord} className='ms-2' size='large' title='Grabar' onClick={ recordingVideo }>
-                        <FiberManualRecordIcon sx={{ color: 'red', fontSize: 30}} />
+                        <RadioButtonCheckedIcon sx={{ color: 'red', fontSize: 30}} />
                     </IconButton>
                     <IconButton ref={refAgain} className='ms-2'  size='large' title='Regrabar' onClick={ initRecordingAgain }>
                         <FlipCameraAndroidIcon sx={{ color: 'white', fontSize: 30}} />
@@ -235,10 +273,10 @@ const Response = () => {
                     }
                 </div>
             </div>
-            <div className='w-75 pt-2 ps-3 pe-3 small' style={{backgroundColor: 'lightgray'}}>
+            <div className='pt-2 ps-3 pe-3 small' style={{backgroundColor: 'lightgray', width: '70%'}}>
                 <p>{`${order}. ${question}`}</p>
             </div>
-            <div className='w-75 mt-2 d-flex justify-content-between'>
+            <div className='mt-2 d-flex justify-content-between' style={{width: '70%'}}>
                 {
                     withNavigationButtons && (
                         <>

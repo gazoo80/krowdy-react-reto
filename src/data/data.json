@@ -1,8 +1,8 @@
 {
     "questions": [
         "¿Cuál es la diferencia entre componente y elemento en React?",
-        "¿Cómo puedes aplicar clases CSS a un componente en React y por qué no se puede usar class?",
-        "¿Se puede inicializar un estado con el valor de una prop? ¿Qué pasa si lo haces y qué hay que tener en cuenta?",
+        "¿Cómo puedes aplicar clases CSS a un componente en React y por qué no usar class?",
+        "¿Se puede inicializar un estado con el valor de una prop? ¿Qué pasa si lo haces?",
         "¿Cómo puedo aplicar estilos de forma condicional a un componente en React?",
         "¿Cómo puedo pasar un parámetro a una función que maneja un evento en React?"
     ]

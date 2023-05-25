@@ -17,9 +17,19 @@ const Questiom = ({question}) => {
 
     return (
         <>
-        <div className="card">
+        <div className="card border-0">
           <figure>  
-              <img src="../src/assets/images/fn2.jpg" className="card-img-top"/>  
+              {
+                 !question.recorded ? 
+                 (
+                     <img height='100%' src="../src/assets/images/fn2.jpg" className="card-img-top"/>  
+                 )
+                 : question?.video && 
+                 (
+                     <video id='videoSnap' width='100%' height='100%' src={window.URL.createObjectURL(question.video)}></video>
+                 ) 
+              }
+              
               {
                   !question.recorded ?
                   (
@@ -33,11 +43,6 @@ const Questiom = ({question}) => {
                   ) :
                   (
                     <>
-                      <figcaption className='init-response'>
-                        <IconButton size='large' title='Pregunta resuelta' >
-                            <TaskAltIcon sx={{ color: 'lightGreen', fontSize: 70 }} />
-                        </IconButton>
-                      </figcaption>
                       <figcaption className='edit-response d-flex justify-content-between'>
                           <IconButton size='large' title='Reproducir video' onClick={ handleIsOpenDialog }>
                               <PlayCircleIcon sx={{ color: 'white', fontSize: 30}} />
@@ -52,12 +57,12 @@ const Questiom = ({question}) => {
                   )
               }
           </figure>
-          <div className='pt-2 ps-3 pe-3 small'  style={{backgroundColor: 'lightgray'}}>
+          <div className='pt-2 ps-3 pe-3 small text-wrap'  style={{backgroundColor: 'lightgray'}}>
               <p>{`${question.order}. ${question.question}`}</p>
           </div>
         </div>
         <Dialog fullWidth={false} maxWidth={'md'}  open={isOpenDialog} onClose={() => setIsOpenDialog(false)}>
-          <div className='video-response'>
+          <div className='video-popup'>
               {
                  question?.video && 
                  (
