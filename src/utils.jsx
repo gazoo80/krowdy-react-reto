@@ -26,4 +26,10 @@ const startCamera = async () => {
     }
 };
 
-export { getInitialState, startCamera };
+const StatusRecording = {
+    InitRecording: 'RECORDING',
+    StopRecording: 'STOP',
+    AgainRecording: 'REGRABAR'
+};
+
+export { getInitialState, startCamera, StatusRecording };

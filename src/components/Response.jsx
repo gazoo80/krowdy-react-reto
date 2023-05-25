@@ -15,6 +15,7 @@ import { useParams } from "react-router-dom";
 import Contexto from '../contexto/Contexto';
 import * as util from '../utils';
 
+
 const Response = () => {                  
     const { id } = useParams(); 
 
@@ -117,22 +118,13 @@ const Response = () => {
         initCamera();
     }
 
-    useEffect(() => {
-        init();
-        console.log('useEffect una vez');
-        return () => {
-            mediaRecorder = null;
-            cameraStream = null;
-            window.clearTimeout(recordTimeout);
-            console.log('unmount en primero');
-        }
-    },[]);
-
     useEffect(() => {    
         init();
         console.log('useEffect por id')
         return () => {
             console.log('unmount en segundo');
+            window.clearTimeout(recordTimeout);
+            window.clearInterval(timerInterval);
         }
     },[id]);
 
