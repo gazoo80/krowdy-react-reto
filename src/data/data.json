@@ -4,6 +4,7 @@
         "¿Cómo puedes aplicar clases CSS a un componente en React y por qué no usar class?",
         "¿Se puede inicializar un estado con el valor de una prop? ¿Qué pasa si lo haces?",
         "¿Cómo puedo aplicar estilos de forma condicional a un componente en React?",
-        "¿Cómo puedo pasar un parámetro a una función que maneja un evento en React?"
+        "¿Cómo puedo pasar un parámetro a una función que maneja un evento en React?",
+        "¿Qué es y para qué sirve la prop `children` en React?"
     ]
 }

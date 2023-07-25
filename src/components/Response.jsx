@@ -227,31 +227,31 @@ const Response = () => {
 
     return (
    
-        <div className='w-100 mt-2 d-flex flex-column justify-content-center align-items-center' style={{height: '700px'}}  >
-            <div className='mb-2 d-flex justify-content-start' style={{width: '70%'}} >
+        <div className='w-100 mt-2 d-flex flex-column justify-content-center align-items-center' style={{height: 'auto'}}  >
+            <div className='mb-2 d-flex justify-content-start width-video-response'>
                 <Link to='/'>
                     <Button variant="outlined" startIcon={<ArrowBackIcon />}>
                         Regresar al cuestionario
                     </Button>
                 </Link>
             </div>
-            <div className=' bg-dark video-response' style={{height: '65%', width: '70%'}} >
+            <div className='bg-dark video-response width-video-response'>
                 <video ref={refVideo} id='video' autoPlay={true} loop width='100%' height='100%'></video>
                 <div ref={refTimer} className='timer-video-response d-flex justify-content-end align-items-center'>
                     <span>00:00</span>
                     <span className='rec-indicator ms-3'></span>
                 </div>
             </div>
-            <div className='bg-dark py-0 d-flex' style={{width: '70%'}}>
+            <div className='bg-dark py-0 d-flex width-video-response'>
                 <div className='flex-grow-1'>
                     <IconButton ref={refRecord} className='ms-2' size='large' title='Grabar' onClick={ recordingVideo }>
-                        <RadioButtonCheckedIcon sx={{ color: 'red', fontSize: 30}} />
+                        <RadioButtonCheckedIcon sx={{ color: 'red'}} className="fs-2"/>
                     </IconButton>
                     <IconButton ref={refAgain} className='ms-2'  size='large' title='Regrabar' onClick={ initRecordingAgain }>
-                        <FlipCameraAndroidIcon sx={{ color: 'white', fontSize: 30}} />
+                        <FlipCameraAndroidIcon sx={{ color: 'white'}} className="fs-2"/>
                     </IconButton>
                     <IconButton ref={refStop} className='ms-2'  size='large' title='Detener grabación' onClick={ stopRecording }>
-                        <StopCircleIcon sx={{ color: 'white', fontSize: 30}} />
+                        <StopCircleIcon sx={{ color: 'white'}} className="fs-2" />
                     </IconButton>
                 </div>
                 <div>
@@ -259,28 +259,29 @@ const Response = () => {
                         recorded &&
                         (
                             <IconButton className='mt-2 me-2' size='large' title='Pregunta resuelta' >
-                                <TaskAltIcon sx={{ color: 'lightGreen', fontSize: 30 }} />
+                                <TaskAltIcon sx={{ color: 'lightGreen'}} className="fs-2"/>
                             </IconButton>
                         )
                     }
                 </div>
             </div>
-            <div className='pt-2 ps-3 pe-3 small' style={{backgroundColor: 'lightgray', width: '70%'}}>
+            <div className='pt-2 ps-3 pe-3 small width-video-response' style={{backgroundColor: 'lightgray'}}>
                 <p>{`${order}. ${question}`}</p>
             </div>
-            <div className='mt-2 d-flex justify-content-between' style={{width: '70%'}}>
+            <div className='mt-2 d-flex justify-content-between width-video-response'>
                 {
                     withNavigationButtons && (
                         <>
                             <Link to={previousRoute} >
                                 <Button variant="contained" startIcon={<SkipPreviousIcon />}>
-                                    Anterior
+                                    <span className='d-none d-sm-block'>Anterior</span>
                                 </Button>
                             </Link>
             
                             <Link to={nextRoute}>
                                 <Button variant="contained" endIcon={<SkipNextIcon />}>
-                                    Siguiente
+                                <span className='d-none d-sm-block'>Siguiente</span>
+                                    
                                 </Button>
                             </Link>
                         </>

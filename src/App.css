@@ -1,6 +1,6 @@
 .list-questions {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 10px;
 }
 
@@ -39,6 +39,10 @@ figure {
   position: relative;
 }
 
+.width-video-response {
+  width: 70%;
+}
+
 .timer-video-response {
   position: absolute;
   right: 0px;
@@ -66,5 +70,29 @@ figure {
   }
   51% {
     visibility: visible;
+  }
+}
+
+@media all and (max-width: 765px) {
+  .width-video-response {
+    width: 90%;
+  }
+}
+
+@media all and (max-width: 450px) {
+  .width-video-response {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .width-sm {
+    width: 80%;
+  }
+}
+
+@media all and (max-width: 458px) {
+  .width-sm {
+    width: 100%;
   }
 }

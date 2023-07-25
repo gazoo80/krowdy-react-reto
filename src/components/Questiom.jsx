@@ -17,7 +17,7 @@ const Questiom = ({question}) => {
 
     return (
         <>
-        <div className="card border-0">
+        <div className="card border-0 bg-light width-sm">
           <figure>  
               {
                  !question.recorded ? 
@@ -57,7 +57,7 @@ const Questiom = ({question}) => {
                   )
               }
           </figure>
-          <div className='pt-2 ps-3 pe-3 small text-wrap'  style={{backgroundColor: 'lightgray'}}>
+          <div className='pt-2 ps-3 pe-3 small text-wrap' style={{backgroundColor: 'lightgray'}}>
               <p>{`${question.order}. ${question.question}`}</p>
           </div>
         </div>
