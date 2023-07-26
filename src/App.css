@@ -43,6 +43,15 @@ figure {
   width: 70%;
 }
 
+.height-video-response {
+  height: 500px;
+}
+
+.dim-video-recorded {
+  width: 640px;
+  height: 480px;
+}
+
 .timer-video-response {
   position: absolute;
   right: 0px;
@@ -73,9 +82,21 @@ figure {
   }
 }
 
+@media all and (max-width: 990px) {
+  .height-video-response {
+    height: 360px;
+  }
+}
+
 @media all and (max-width: 765px) {
   .width-video-response {
     width: 90%;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .height-video-response {
+    height: 200px;
   }
 }
 
@@ -86,13 +107,29 @@ figure {
 }
 
 @media all and (max-width: 768px) {
-  .width-sm {
-    width: 80%;
+  .width-video-question {
+    width: 90%;
+    padding-left: 10%;
   }
 }
 
 @media all and (max-width: 458px) {
-  .width-sm {
+  .width-video-question {
     width: 100%;
+    padding-left: 0;
   }
 }
+
+@media all and (max-width: 705px) {
+  .dim-video-recorded {
+    width: 400px;
+    height: 300px;
+  }
+}
+
+@media all and (max-width: 465px) {
+  .dim-video-recorded {
+    width: 250px;
+    height: 170px;
+  }
+} 

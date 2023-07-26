@@ -17,7 +17,7 @@ const Questiom = ({question}) => {
 
     return (
         <>
-        <div className="card border-0 bg-light width-sm">
+        <div className="card border-0 bg-light width-video-question animated fadeIn">
           <figure>  
               {
                  !question.recorded ? 
@@ -44,11 +44,11 @@ const Questiom = ({question}) => {
                   (
                     <>
                       <figcaption className='edit-response d-flex justify-content-between'>
-                          <IconButton size='large' title='Reproducir video' onClick={ handleIsOpenDialog }>
+                          <IconButton className='pb-1' title='Reproducir video' onClick={ handleIsOpenDialog }>
                               <PlayCircleIcon sx={{ color: 'white', fontSize: 30}} />
                           </IconButton>
-                          <Link to={`/questions/${question.id}`}>
-                              <IconButton size='large' title='Regrabar video'>
+                          <Link className='mb-0' to={`/questions/${question.id}`}>
+                              <IconButton title='Regrabar video'>
                                   <SwitchVideoIcon sx={{ color: 'white', fontSize: 30}} />
                               </IconButton>
                           </Link>
@@ -57,7 +57,7 @@ const Questiom = ({question}) => {
                   )
               }
           </figure>
-          <div className='pt-2 ps-3 pe-3 small text-wrap' style={{backgroundColor: 'lightgray'}}>
+          <div className='pt-2 ps-3 pe-3 small text-wrap fw-bolder' style={{backgroundColor: '#b0c4de'}}>
               <p>{`${question.order}. ${question.question}`}</p>
           </div>
         </div>
@@ -66,7 +66,7 @@ const Questiom = ({question}) => {
               {
                  question?.video && 
                  (
-                 <video id='video' controls width='640px' height='480px' src={window.URL.createObjectURL(question.video)}></video>
+                 <video id='video' className='dim-video-recorded' controls src={window.URL.createObjectURL(question.video)}></video>
                  )
               }
           </div>

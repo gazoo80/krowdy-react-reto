@@ -227,7 +227,7 @@ const Response = () => {
 
     return (
    
-        <div className='w-100 mt-2 d-flex flex-column justify-content-center align-items-center' style={{height: 'auto'}}  >
+        <div className='w-100 mt-2 d-flex flex-column justify-content-center align-items-center animated fadeIn' style={{height: 'auto'}}  >
             <div className='mb-2 d-flex justify-content-start width-video-response'>
                 <Link to='/'>
                     <Button variant="outlined" startIcon={<ArrowBackIcon />}>
@@ -235,7 +235,7 @@ const Response = () => {
                     </Button>
                 </Link>
             </div>
-            <div className='bg-dark video-response width-video-response'>
+            <div className='bg-dark video-response width-video-response height-video-response'>
                 <video ref={refVideo} id='video' autoPlay={true} loop width='100%' height='100%'></video>
                 <div ref={refTimer} className='timer-video-response d-flex justify-content-end align-items-center'>
                     <span>00:00</span>
@@ -244,13 +244,13 @@ const Response = () => {
             </div>
             <div className='bg-dark py-0 d-flex width-video-response'>
                 <div className='flex-grow-1'>
-                    <IconButton ref={refRecord} className='ms-2' size='large' title='Grabar' onClick={ recordingVideo }>
+                    <IconButton ref={refRecord} className='ms-2 mb-1' title='Grabar' onClick={ recordingVideo }>
                         <RadioButtonCheckedIcon sx={{ color: 'red'}} className="fs-2"/>
                     </IconButton>
-                    <IconButton ref={refAgain} className='ms-2'  size='large' title='Regrabar' onClick={ initRecordingAgain }>
+                    <IconButton ref={refAgain} className='ms-2 mb-1'  title='Regrabar' onClick={ initRecordingAgain }>
                         <FlipCameraAndroidIcon sx={{ color: 'white'}} className="fs-2"/>
                     </IconButton>
-                    <IconButton ref={refStop} className='ms-2'  size='large' title='Detener grabación' onClick={ stopRecording }>
+                    <IconButton ref={refStop} className='ms-2 mb-1' title='Detener grabación' onClick={ stopRecording }>
                         <StopCircleIcon sx={{ color: 'white'}} className="fs-2" />
                     </IconButton>
                 </div>
@@ -258,14 +258,14 @@ const Response = () => {
                     {
                         recorded &&
                         (
-                            <IconButton className='mt-2 me-2' size='large' title='Pregunta resuelta' >
+                            <IconButton className='mt-1 me-2' title='Pregunta resuelta' >
                                 <TaskAltIcon sx={{ color: 'lightGreen'}} className="fs-2"/>
                             </IconButton>
                         )
                     }
                 </div>
             </div>
-            <div className='pt-2 ps-3 pe-3 small width-video-response' style={{backgroundColor: 'lightgray'}}>
+            <div className='pt-2 ps-3 pe-3 small fw-bolder width-video-response' style={{backgroundColor: '#b0c4de'}}>
                 <p>{`${order}. ${question}`}</p>
             </div>
             <div className='mt-2 d-flex justify-content-between width-video-response'>
