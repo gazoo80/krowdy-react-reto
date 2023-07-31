@@ -17,19 +17,16 @@ function App() {
           <div className='container mb-5' style={{backgroundColor: 'slategray'}}>
                 <div className='row m-0 mb-3 border-1 border-dark border-bottom'>
                     <div className='col-12 col-sm-4 p-0 mb-1 fw-bold text-black-50'>
-                        {/* <i class="bi bi-person-fill me-1 fs-4 text-info"></i> */}
                         <img width='20px' src="../src/assets/images/user1.gif"
                         className='me-1 align-text-bottom'/>
                         Jefferson Zárate
                     </div>
                     <div className='col-12 col-sm-4 text-sm-center p-0 mb-1 fw-bold text-black-50'>
-                        {/* <i class="bi bi-file-earmark-code-fill me-1 fs-4"></i> */}
                         <img width='20px' src="../src/assets/images/computer.gif"
                         className='me-1 align-text-bottom'/>
                         React JS
                     </div>
                     <div className='col-12 col-sm-4 text-sm-end p-0 mb-1 fw-bold text-black-50'>
-                        {/* <i class="bi bi-stopwatch-fill me-1 fs-4"></i> */}
                         <img width='20px' src="../src/assets/images/time.gif"
                         className='me-1 align-text-bottom'/>
                         30 min
