@@ -17,7 +17,7 @@ const Questiom = ({question}) => {
 
     return (
         <>
-        <div className="card border-0 width-video-question animated fadeIn" style={{backgroundColor: 'slategray'}}>
+        <div className="card border-0 width-video-question animated fadeIn" style={{backgroundColor: '#d3d3d3'}}>
           <figure>  
               {
                  !question.recorded ? 
@@ -57,7 +57,7 @@ const Questiom = ({question}) => {
                   )
               }
           </figure>
-          <div className='pt-2 ps-3 pe-3 small text-wrap fw-bolder' style={{backgroundColor: '#b0c4de'}}>
+          <div className='pt-2 ps-3 pe-3 small text-wrap fw-bolder' style={{backgroundColor: 'darkgray'}}>
               <p>{`${question.order}. ${question.question}`}</p>
           </div>
         </div>

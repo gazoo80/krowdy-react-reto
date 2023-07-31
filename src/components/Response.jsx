@@ -265,7 +265,7 @@ const Response = () => {
                     }
                 </div>
             </div>
-            <div className='pt-2 ps-3 pe-3 fw-bolder width-video-response' style={{backgroundColor: '#b0c4de'}}>
+            <div className='pt-2 ps-3 pe-3 fw-bolder width-video-response' style={{backgroundColor: 'darkgray'}}>
                 <p>{`${order}. ${question}`}</p>
             </div>
             <div className='mt-2 d-flex justify-content-between width-video-response'>

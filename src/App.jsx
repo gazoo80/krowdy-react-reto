@@ -9,12 +9,12 @@ function App() {
 
   return (
       <Provider>
-          <div className="container-fluid" style={{ backgroundColor: '#002b99'}}>
+          <div className="container-fluid" style={{ backgroundColor: '#1976d2'}}>
                 <p className="text-white fs-1 text-center py-2 align-middle">
                     <CenterFocusStrongIcon className='mb-2' sx={{ color: 'white', fontSize: 45}} />&nbsp;Video Cuestionario
                 </p>
           </div>
-          <div className='container mb-5' style={{backgroundColor: 'slategray'}}>
+          <div className='container mb-5' style={{backgroundColor: '#d3d3d3'}}>
                 <div className='row m-0 mb-3 border-1 border-dark border-bottom'>
                     <div className='col-12 col-sm-4 p-0 mb-1 fw-bold text-black-50'>
                         <img width='20px' src="../src/assets/images/user1.gif"
