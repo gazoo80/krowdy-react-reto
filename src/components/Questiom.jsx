@@ -17,7 +17,7 @@ const Questiom = ({question}) => {
 
     return (
         <>
-        <div className="card border-0 bg-light width-video-question animated fadeIn">
+        <div className="card border-0 width-video-question animated fadeIn" style={{backgroundColor: 'slategray'}}>
           <figure>  
               {
                  !question.recorded ? 
@@ -36,7 +36,7 @@ const Questiom = ({question}) => {
                       <figcaption className='init-response'>
                           <Link to={`/questions/${question.id}`}>
                               <IconButton size='large' title='Activar cámara web'>
-                                  <VideoCameraFrontIcon sx={{ color: 'white', fontSize: 70}} />
+                                  <VideoCameraFrontIcon sx={{ opacity:'90%', color: 'white', fontSize: 60}} />
                               </IconButton>
                           </Link>
                       </figcaption>

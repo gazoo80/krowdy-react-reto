@@ -230,7 +230,7 @@ const Response = () => {
         <div className='w-100 mt-2 d-flex flex-column justify-content-center align-items-center animated fadeIn' style={{height: 'auto'}}  >
             <div className='mb-2 d-flex justify-content-start width-video-response'>
                 <Link to='/'>
-                    <Button variant="outlined" startIcon={<ArrowBackIcon />}>
+                    <Button variant="contained" color="error" size='small' startIcon={<ArrowBackIcon />}>
                         Regresar al cuestionario
                     </Button>
                 </Link>
@@ -265,7 +265,7 @@ const Response = () => {
                     }
                 </div>
             </div>
-            <div className='pt-2 ps-3 pe-3 small fw-bolder width-video-response' style={{backgroundColor: '#b0c4de'}}>
+            <div className='pt-2 ps-3 pe-3 fw-bolder width-video-response' style={{backgroundColor: '#b0c4de'}}>
                 <p>{`${order}. ${question}`}</p>
             </div>
             <div className='mt-2 d-flex justify-content-between width-video-response'>
@@ -273,13 +273,13 @@ const Response = () => {
                     withNavigationButtons && (
                         <>
                             <Link to={previousRoute} >
-                                <Button variant="contained" startIcon={<SkipPreviousIcon />}>
+                                <Button variant="contained" size='small' startIcon={<SkipPreviousIcon />}>
                                     <span className='d-none d-sm-block'>Anterior</span>
                                 </Button>
                             </Link>
             
                             <Link to={nextRoute}>
-                                <Button variant="contained" endIcon={<SkipNextIcon />}>
+                                <Button variant="contained" size='small' endIcon={<SkipNextIcon />}>
                                 <span className='d-none d-sm-block'>Siguiente</span>
                                     
                                 </Button>
